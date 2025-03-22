@@ -1,0 +1,22 @@
+{% load static %}
+    <!-- Gallery Section    S T A R T -->
+    <div class="gallery-section">
+        <div class="gallery-wrapper style1">
+            <div class="container">
+                <div class="slider-area">
+                    <div class="swiper gallerySliderOne">
+                        <div class="swiper-wrapper">
+                            {% for Slide in Slides %}
+                                <div class="gallery-thumb">
+                                    <a href="#">
+                                        <img src="{{ Slide.SlideImage.url}}" alt="thumb">
+                                        <div class="icon"><img src=" {% static 'assets/img/icon/camera.svg' %}" alt="icon"></div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
