@@ -1,0 +1,93 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %}
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+    <!-- Reservation Section    S T A R T -->
+    <div class="reservation-section section-padding fix">
+      <div class="reservation-wrapper">
+          <div class="container">
+              <div class="row gy-5">
+                  <div class="col-xl-6 d-flex align-items-center">
+                      <div class="get-in-touch">
+                          <h2>GET IN TOUCH</h2>
+                          <p class="desc">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                              dolore of magna aliqua. Ut enim ad minim veniam, made</p>
+                          <div class="contact-info-wrapper">
+                              <div class="contact-info">
+                                  <h5>Contact</h5>
+                                  <p>{{ Contact.PhoneNumber }}</p>
+                              </div>
+                              <div class="contact-info">
+                                  <h5>Email</h5>
+                                  <p>{{ Contact.Email}}</p> 
+                              </div>
+                          </div>
+                          <div class="contact-info-wrapper">
+                              <div class="contact-info">
+                                  <h5>Address</h5>
+                                  <p>{{ Contact.Address }}</p>
+                              </div>
+                              <div class="contact-info">
+                                  <h5>Follow</h5>
+                                  <ul class="social-media">
+                                      <li> <a href="https://www.facebook.com"> <i class="fa-brands fa-facebook-f"></i>
+                                          </a>
+                                      </li>
+                                      <li> <a href="https://www.youtube.com"> <i class="fa-brands fa-youtube"></i>
+                                          </a> </li>
+                                      <li> <a href="https://www.x.com"> <i class="fa-brands fa-twitter"></i> </a>
+                                      </li>
+                                      <li> <a href="https://www.instagram.com"> <i class="fa-brands fa-instagram"></i>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-6">
+                      <div class="reservation-form">
+                          <div class="contact-form style2">
+                              <h2>Create An <span class="text-theme-color">Reservation</span> </h2>
+                              <form class="row" action="#">
+                                  <div class="col-md-6">
+                                      <label class="mb-2" for="date">Select Date*</label>
+                                      <input id="date" type="date">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label class="mb-2" for="time">Select Time*</label>
+                                      <input id="time" type="time">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label class="mb-2" for="phone">Give Phone Number*</label>
+                                      <input id="phone" type="number" placeholder="Phone Number">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label class="mb-2" for="service">Number of Guest*</label>
+                                      <input id="service" type="text" placeholder="Guest">
+                                  </div>
+                                  <div class="col-12">
+                                      <textarea id="message" class="form-control"
+                                          placeholder="Write your message here..." rows="5"></textarea>
+                                  </div>
+                                  <div class="col-12 form-group mb-0">
+                                      <button class="theme-btn w-100">BOOK A TABLE <i
+                                              class="fa-sharp fa-regular fa-arrow-right-long bg-transparent text-white"></i></button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    {% include 'main/footer.html' %}
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)mqde%k4!2u*)!t-1@c0t0tfk81@54+_)c__bmi%ptwi28_q1$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Food_Restaurant.apps.FoodRestaurantConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'Web_Dev_Assignment.urls'
 
@@ -67,7 +70,7 @@ TEMPLATES = [
         },
     },
 ]
-
+    
 
 WSGI_APPLICATION = 'Web_Dev_Assignment.wsgi.application'
 
@@ -116,6 +119,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIG = {
+    'default': {
+        'toolbar' : 'all',
+        'skin' : 'moono',
+        'codeSnippet_theme' : 'monokai',
+        'extraPlugins' : ','.join(
+            'codeSnippet', 
+            'widget',
+            'dialog',
+        )
+    }, 
+}              
 
 STATIC_URL = 'static/'
 

@@ -1,0 +1,48 @@
+{% load static %}
+<section class="best-food-items-section fix section-padding bg-color2">
+    <div class="best-food-wrapper">
+      <div class="shape1 float-bob-y d-none d-xxl-block">
+        <img src=" {% static 'assets/img/shape/bestFoodItemsShape1_1.png' %}" alt="shape" />
+      </div>
+      <div class="shape2 float-bob-x d-none d-xxl-block">
+        <img src=" {% static 'assets/img/shape/bestFoodItemsShape1_2.png' %}" alt="shape" />
+      </div>
+      <div class="container">
+        <div class="title-area">
+          <div class="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
+            <img class="me-1" src=" {% static 'assets/img/icon/titleIcon.svg' %}" alt="icon" />Best Food <img src=" {% static 'assets/img/icon/titleIcon.svg' %}" alt="icon" />
+          </div>
+          <h2 class="title wow fadeInUp" data-wow-delay="0.7s">Popular Food Items</h2>
+        </div>
+        <div class="slider-area mb-n40">
+          
+          <div class="swiper bestFoodItems-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+              {% for product in Products %}  
+                <div class="single-food-items">
+                  <div class="item-thumb">
+                    <img src="{{ product.ProductImage.url }}" alt="thumb" />
+                    <div class="circle-shape">
+                      <img class="cir36" src=" {% static 'assets/img/food-items/circleShape.png' %}" alt="shape" />
+                    </div>
+                  </div>
+                  <div class="item-content">
+                    <a href="menu.html"><h3>{{ product.ProductName }}</h3></a>
+                    <div class="text">{{ product.ProductLabel }}</div>
+                    <h6>${{ product.ProductPrice }}</h6>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              </div>
+          </div>
+            
+            </div>
+          </div>
+          <div class="bestFoodItems-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>

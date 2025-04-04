@@ -15,7 +15,7 @@
                                 <div class="item1"><i class="fa-solid fa-location-dot"></i></div>
                                 <div class="item2">
                                     <h6>address</h6>
-                                    <p>4648 Rocky Road Philadelphia </p>
+                                    <p>{{ Contact.Address }}</p>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                                 <div class="item1"><i class="fa-solid fa-envelope"></i></div>
                                 <div class="item2">
                                     <h6>send email</h6>
-                                    <p>info@exmple.com</p>
+                                    <p>{{ Contact.Email }}</p>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                 <div class="item1"><i class="fa-regular fa-phone-volume"></i></div>
                                 <div class="item2">
                                     <h6>call emergency</h6>
-                                    <p>+88 0123 654 99</p>
+                                    <p>{{ Contact.PhoneNumber }}</p>
                                 </div>
                             </div>
                         </div>
@@ -69,36 +69,14 @@
                                 <h3>Quick Links</h3>
                             </div>
                             <ul class="list-area">
+                                {% for footer in Footer %}
                                 <li>
-                                    <a href="about.html">
+                                    <a href="{{ footer.FooterURL }}">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        About Us
+                                        {{ footer.FooterName }}
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="gallery.html">
-                                        <i class="fa-solid fa-chevrons-right"></i>
-                                        Our Gallery
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog.html">
-                                        <i class="fa-solid fa-chevrons-right"></i>
-                                        Our Blogs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="faq.html">
-                                        <i class="fa-solid fa-chevrons-right"></i>
-                                        FAQ’S
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">
-                                        <i class="fa-solid fa-chevrons-right"></i>
-                                        Contact Us
-                                    </a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -148,10 +126,7 @@
                             </div>
                             <ul class="list-area">
                                 <li class="mb-2">
-                                    Monday – Friday: <span class="text-theme-color2"> 8am – 4pm </span>
-                                </li>
-                                <li>
-                                    Saturday: <span class="text-theme-color2"> 8am – 12am </span>
+                                    {{ Contact.OpenHour}}
                                 </li>
                             </ul>
                             <form action="#" class="mt-4">

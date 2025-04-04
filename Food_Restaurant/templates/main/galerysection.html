@@ -6,10 +6,10 @@
                 <div class="slider-area">
                     <div class="swiper gallerySliderOne">
                         <div class="swiper-wrapper">
-                            {% for Slide in Slides %}
+                            {% for gallery in Gallery %}
                                 <div class="gallery-thumb">
                                     <a href="#">
-                                        <img src="{{ Slide.SlideImage.url}}" alt="thumb">
+                                        <img src="{{ gallery.GalleryImage.url}}" alt="thumb">
                                         <div class="icon"><img src=" {% static 'assets/img/icon/camera.svg' %}" alt="icon"></div>
                                     </a>
                                 </div>

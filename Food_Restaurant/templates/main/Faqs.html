@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %}
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+  <!-- Faq Section    S T A R T -->
+  <div class="faq-section fix section-padding">
+    <div class="container">
+        <div class="title-area mb-45">
+            <div class="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
+                <img class="me-1" src="{% static 'assets/img/icon/titleIcon.svg' %}" alt="icon">Faq<img class="ms-1"
+                    src="{% static 'assets/img/icon/titleIcon.svg' %}" alt="icon">
+            </div>
+            <div class="title wow fadeInUp" data-wow-delay="0.7s">
+                frequently ask question
+            </div>
+        </div>
+        <div class="row gx-60">
+          <div class="faq-content style-1 mt-5">
+              <div class="faq-accordion">
+                  <div class="accordion" id="accordion">
+                      {% for data in faqs %}
+                        <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".3s">
+                            <h5 class="accordion-header">                 
+                                <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true"
+                                    aria-controls="faq1">
+                                    {{ data.Question }}
+                                </button>
+                            </h5>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    {{ data.Answer }}
+                                </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+    {% include 'main/footer.html' %}
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>
