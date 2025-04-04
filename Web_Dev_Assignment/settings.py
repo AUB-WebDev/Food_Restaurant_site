@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)mqde%k4!2u*)!t-1@c0t0tfk81@54+_)c__bmi%ptwi28_q1$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True    
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Food_Restaurant.apps.FoodRestaurantConfig',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -130,15 +131,18 @@ CKEDITOR_CONFIG = {
         'toolbar' : 'all',
         'skin' : 'moono',
         'codeSnippet_theme' : 'monokai',
-        'extraPlugins' : ','.join(
+        'extraPlugins' : ','.join([
             'codeSnippet', 
             'widget',
             'dialog',
+            ]
         )
     }, 
 }              
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

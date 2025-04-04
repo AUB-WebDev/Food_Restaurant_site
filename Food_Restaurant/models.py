@@ -1,5 +1,5 @@
 from django.db import models
-import ckeditor
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Menu(models.Model):
@@ -50,7 +50,7 @@ class Products(models.Model):
 class Blog(models.Model):
     BlogTitle = models.CharField(max_length=100)
     BlogID = models.BigAutoField(primary_key=True)
-    BlogDescription = models.ckedi
+    BlogDescription = RichTextUploadingField(null=True, blank=True)
     BlogThumbnail = models.ImageField(upload_to='images/')
     BlogDate = models.DateTimeField(auto_now_add=True)
     BlogAuthor = models.CharField(max_length=50, null=True, blank=True)
