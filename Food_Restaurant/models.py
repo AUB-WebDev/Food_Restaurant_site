@@ -65,11 +65,18 @@ class Chef(models.Model):
     ChefImage = models.ImageField(upload_to='images/')
     ChefPosition = models.CharField(max_length=100, null=True, blank=True)
     ChefDescription = models.TextField(null=True, blank=True)
-    ChefSkills = models.CharField(max_length=100, null=True, blank=True)
     
     def __str__(self):
         return self.ChefName 
     
+class ChefSkill(models.Model):
+    chef = models.ForeignKey(Chef, on_delete=models.CASCADE, related_name='skills')
+    skill_name = models.CharField(max_length=100)
+    skill_percentage = models.PositiveIntegerField()  # stores 0-100
+    
+    def __str__(self):
+        return f"{self.chef.ChefName} - {self.skill_name} ({self.skill_percentage}%)"
+
 class SocialMedia(models.Model):
     CatergoryID = models.ForeignKey('Catergory', on_delete=models.CASCADE)
     SocialMediaURL = models.CharField(max_length=300, null=True, blank=True)

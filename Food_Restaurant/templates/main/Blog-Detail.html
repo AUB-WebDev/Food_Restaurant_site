@@ -1,0 +1,280 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %} 
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+
+    <!-- Blog Details Section    S T A R T -->
+    <div class="blog-details-section section-padding fix">
+      <div class="container">
+        <div class="blog-details-area">
+          <div class="row g-5">
+            <div class="col-12 col-lg-8">
+              <div class="blog-post-details">
+                <div class="single-blog-post">
+                  <div
+                    class="post-featured-thumb background-image"
+                    style="
+                      background-image: url({{ Blog.BlogThumbnail.url }});
+                    "
+                  ></div>
+                  <div class="post-content">
+                    <ul
+                      class="post-list d-flex align-items-center wow fadeInUp"
+                      data-wow-delay=".2s"
+                    >
+                      <li>
+                        <i class="fa-light fa-user"></i>
+                        By {{ Blog.BlogAuthor }}
+                      </li>
+                      <li>
+                        <i class="fa-light fa-comments"></i>
+                        2 Comments
+                      </li>
+                      <li>
+                        <i class="fa-regular fa-tag"></i>
+                        {{ Blog.CatergoryID.CatergoryName }}
+                      </li>
+                    </ul>
+                    {{ Blog.BlogDescription|safe }}
+                  </div>
+                </div>
+                <div
+                  class="row tag-share-wrap mb-30 wow fadeInUp"
+                  data-wow-delay=".8s"
+                >
+                  <div
+                    class="col-lg-4 col-12 mt-3 mt-lg-0 text-lg-end wow fadeInUp"
+                    data-wow-delay="1.2s"
+                  >
+                    <div class="social-share">
+                      <span class="me-3">Share:</span>
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="comments-area wow fadeInUp" data-wow-delay="1.2s">
+                  <div class="comments-heading">
+                    <h3>02 Comments</h3>
+                  </div>
+                  <div class="blog-single-comment d-flex gap-4 pt-30 pb-30">
+                    <div class="image">
+                      <img
+                        src="{% static 'assets/img/blog/comment-author1.png' %}"
+                        alt="image"
+                      />
+                    </div>
+                    <div class="content">
+                      <div
+                        class="head d-flex flex-wrap gap-2 align-items-center justify-content-between"
+                      >
+                        <div class="con">
+                          <h5><a href="blog-details.html">Albert Flores</a></h5>
+                          <span>March 20, 2024 at 2:37 pm</span>
+                        </div>
+                        <div class="btn">
+                          <a href="blog-details.html" class="reply">Reply</a>
+                        </div>
+                      </div>
+                      <p class="mt-10 mb-0">
+                        Neque porro est qui dolorem ipsum quia quaed inventor
+                        veritatis et quasi architecto var sed efficitur turpis
+                        gilla sed sit amet finibus eros. Lorem Ipsum is simply
+                        dummy
+                      </p>
+                    </div>
+                  </div>
+                  <div class="blog-single-comment d-flex gap-4 pt-30 pb-30">
+                    <div class="image">
+                      <img
+                        src="{% static 'assets/img/blog/comment-author2.png' %}"
+                        alt="image"
+                      />
+                    </div>
+                    <div class="content">
+                      <div
+                        class="head d-flex flex-wrap gap-2 align-items-center justify-content-between"
+                      >
+                        <div class="con">
+                          <h5><a href="blog-details.html">Alex Flores</a></h5>
+                          <span>March 20, 2024 at 2:37 pm</span>
+                        </div>
+                        <div class="btn">
+                          <a href="blog-details.html" class="reply">Reply</a>
+                        </div>
+                      </div>
+                      <p class="mt-10 mb-0">
+                        Neque porro est qui dolorem ipsum quia quaed inventor
+                        veritatis et quasi architecto var sed efficitur turpis
+                        gilla sed sit amet finibus eros. Lorem Ipsum is simply
+                        dummy
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment-form-wrap pt-5 wow fadeInUp"
+                  data-wow-delay="1.2s"
+                >
+                  <h3>Leave a comments</h3>
+                  <form action="#" id="contact-form" method="POST">
+                    <div class="row g-4">
+                      <div class="col-lg-6">
+                        <div class="form-clt">
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Your Name"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-clt">
+                          <input
+                            type="text"
+                            name="email"
+                            id="email2"
+                            placeholder="Your Email"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-clt">
+                          <textarea
+                            name="message"
+                            id="message"
+                            placeholder="Write Message"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <button type="submit" class="theme-btn">
+                          Post a Comment
+                          <i
+                            class="fa-sharp fa-light fa-arrow-right-long bg-transparent text-white ms-1"
+                          ></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="main-sidebar2">
+                <div
+                  class="single-sidebar-widget wow fadeInUp"
+                  data-wow-delay=".2s"
+                >
+                  <div class="wid-title">
+                    <h3>Search</h3>
+                  </div>
+                  <div class="search-widget">
+                    <form action="#">
+                      <input type="text" placeholder="Search here" />
+                      <button type="submit">
+                        <i class="fa-sharp fa-light fa-magnifying-glass"></i>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="single-sidebar-widget wow fadeInUp"
+                  data-wow-delay=".4s"
+                >
+                  <div class="wid-title">
+                    <h3>Categories</h3>
+                  </div>
+                  <div class="news-widget-categories">
+                    <ul>
+                      <li>
+                        <a href="blog-details.html"
+                          >Breakfast <span>(08)</span></a
+                        >
+                      </li>
+                      <li>
+                        <a href="blog-details.html"
+                          >Restaurant <span>(11)</span></a
+                        >
+                      </li>
+                      <li class="active">
+                        <a href="blog-details.html">Dinner <span>(12)</span></a>
+                      </li>
+                      <li>
+                        <a href="blog-details.html"
+                          >Fast Food <span>(18)</span></a
+                        >
+                      </li>
+                      <li>
+                        <a href="blog-details.html">Launch<span>(07)</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div
+                  class="single-sidebar-widget wow fadeInUp"
+                  data-wow-delay=".6s"
+                >
+                  <div class="wid-title">
+                    <h3>Recent Post</h3>
+                  </div>
+                  <div class="recent-post-area">
+                    {% for blog in Blogs %}
+                      <div class="recent-items">
+                        <div class="recent-thumb">
+                          <img
+                            src="{{ blog.BlogThumbnail.url }}"
+                            alt="img"
+                          />
+                        </div>
+                        <div class="recent-content">
+                          <ul>
+                            <li>
+                              {% comment %} <img
+                                src="{% static 'assets/img/icon/calendarIcon.png' %} "
+                                alt="icon"
+                              /> {% endcomment %}
+                              {{ blog.BlogDate|date:'d M, Y' }}
+                            </li>
+                          </ul>
+                          <h6>
+                            <a href="{% url 'blogdetail' blog.BlogID %}">
+                              {{ blog.BlogTitle }}
+                            </a>
+                          </h6>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div
+                  class="single-sidebar-widget wow fadeInUp"
+                  data-wow-delay=".9s"
+                >
+                  <div class="wid-title">
+                    <h3>Tags</h3>
+                  </div>
+                  <div class="news-widget-categories">
+                    <div class="tagcloud">
+                        <a href="#">{{ Blog.Tags }}</a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'main/footer.html' %} 
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>

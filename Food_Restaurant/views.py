@@ -139,3 +139,56 @@ def viewTestimonial(request):
     }
     
     return render(request, 'main/Testimonial.html', context)
+
+
+def viewBlog(request):
+    context = {
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Blog' : Blog.objects.all(),
+    }
+    
+    return render(request, 'main/Blog.html', context)
+
+
+
+
+def viewBlogDetail(request, blog_id):
+    context = {
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Blog' : Blog.objects.get(BlogID=blog_id),
+        'Blogs' : Blog.objects.all(),
+    }
+    
+    return render(request, 'main/Blog-Detail.html', context)
+
+
+def viewChef(request):
+    context = {
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Chef' : Chef.objects.all(),
+    }
+    
+    return render(request, 'main/Chef.html', context)
+
+
+def viewChefDetail(request, chefname):
+    context = {
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Chefs' : Chef.objects.all()[:3],
+        'Chef' : Chef.objects.get(ChefName=chefname),
+        'ChefSkills' : ChefSkill.objects.filter(chef=chefname),
+    }
+    
+    return render(request, 'main/Chef-Detail.html', context)

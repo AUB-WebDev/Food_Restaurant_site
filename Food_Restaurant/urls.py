@@ -15,5 +15,9 @@ urlpatterns = [
     path('shopdetail/<int:product_id>/', views.viewShopDetail, name='shopdetail'),
     path('account/', views.viewAccount, name='account'),
     path('gallery/', views.viewGallery, name='gallery'),
-    path('testimonial', views.viewTestimonial, name='testimonial')
+    path('testimonial', views.viewTestimonial, name='testimonial'),
+    path('blog/', views.viewBlog, name='blog'),
+    path('blogdetail/<int:blog_id>/', views.viewBlogDetail, name='blogdetail'),
+    path('chef/', views.viewChef, name='chef'),
+    path('chefdetail/<str:chefname>/', views.viewChefDetail, name='chefdetail'),
 ]
