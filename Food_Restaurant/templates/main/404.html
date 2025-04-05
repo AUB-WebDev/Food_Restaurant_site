@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %}
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+
+    <!-- Error Section    S T A R T -->
+    <div class="error-section section-padding fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="error-wrapper text-center">
+                        <img class="img-fluid" src="{% static 'assets/img/bg/error.png' %}" alt="error-img">
+                        <h2>Sorry we cant find a page you’re looking for</h2>
+                        <a class="theme-btn" href="/">Back To Home Page <i
+                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'main/footer.html' %}
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+
+<section class="blog-section section-padding fix">
+  <div class="burger-shape">
+    <img src=" {% static 'assets/img/blog/burger-shape.png' %}" alt="img" />
+  </div>
+  <div class="pizza-shape">
+    <img src=" {% static 'assets/img/blog/pizza-shape.png' %}" alt="img" />
+  </div>
+  <div class="blog-wrapper style1">
+    <div class="container">
+      <div class="blog-card-wrap style1">
+        <div class="title-area">
+          <div class="sub-title text-center wow fadeInUp" data-wow-delay="0.5s">
+            <img
+              class="me-1"
+              src=" {% static 'assets/img/icon/titleIcon.svg' %}"
+              alt="icon"
+            />LATEST NEWS<img
+              class="ms-1"
+              src=" {% static 'assets/img/icon/titleIcon.svg' %}"
+              alt="icon"
+            />
+          </div>
+          <h2 class="title wow fadeInUp" data-wow-delay="0.7s">
+            Our Latest Foods News
+          </h2>
+        </div>
+        <div class="slider-area">
+          <div class="swiper blogSliderOne">
+            <div class="swiper-wrapper">
+                {% for blog in Blog %}
+                <div class="swiper-slide">
+                    <div
+                      class="blog-card style1 wow fadeInUp"
+                      data-wow-delay="0.2s"
+                    >
+                      <div class="blog-thumb">
+                        <img
+                          src=" {{ blog.BlogThumbnail.url }}"
+                          alt="thumb"
+                        />
+                      </div>
+                      <div class="blog-content">
+                        <div class="blog-meta">
+                          <div class="item1">
+                            <h6>{{ blog.BlogDate|date:'d'}}</h6>
+                            <p>{{ blog.BlogDate|date:'M'}}</p>
+                          </div>
+                          <div class="item2">
+                            <div class="icon">
+                              <img
+                                src=" {% static 'assets/img/icon/user.svg' %}"
+                                alt="icon"
+                              /><span>By {{ blog.BlogAuthor}}</span>
+                            </div>
+                          </div>
+                          <div class="item3">
+                            <div class="icon">
+                              <img
+                                src=" {% static 'assets/img/icon/tag.svg' %}"
+                                alt="icon"
+                              /><span>{{ blog.CatergoryID.CatergoryName }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="{% url 'blogdetail' blog.BlogID %}"
+                          ><h3>{{ blog.BlogTitle }}</h3></a
+                        >
+                        <a href="{% url 'blogdetail' blog.BlogID %}" class="link-btn"
+                          ><span>Read More</span>
+                          <i class="fa-solid fa-arrow-right-long"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <div class="arrow-prev">
+        <i class="fa-regular fa-arrow-left"></i>
+      </div>
+      <div class="arrow-next">
+        <i class="fa-regular fa-arrow-right"></i>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %} 
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+
+    <!-- Chefe Details Section    S T A R T -->
+    <div class="chefe-details-section section-padding fix">
+      <div class="container">
+        <div class="row gy-5 gx-60">
+          <div class="col-xl-6">
+            <div class="chefe-thumb">
+              <img
+                class="img-fluid"
+                src="{{ Chef.ChefImage.url }}"
+                alt="chefThumb"
+              />
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <div class="chefe-details-wrapper style1">
+              <h2>{{ Chef.ChefName}}</h2>
+              <h6>{{ Chef.ChefPosition }}</h6>
+              <p>
+                  {{ Chef.ChefDescription }}
+              </p>
+              <h5>Skills:</h5>
+              {% for ChefSkill in ChefSkills %}
+                <div class="progress-wrap wow fadeInUp" data-wow-delay=".2s">
+                  <div class="progress-meta">
+                  <div class="title">{{ ChefSkill.skill_name }}</div>
+                    <div class="percentage">{{ ChefSkill.skill_percentage }}%</div>
+                  </div>
+                  <div class="progress-container">
+                    <div class="progress-bar" style="width: {{ ChefSkill.skill_percentage }}%"></div>
+                  </div>
+                </div>
+              {% endfor %}
+              <div class="follow-area">
+                <h5 class="mb-3">Follow on</h5>
+                <ul class="social-media">
+                  <li>
+                    <a href="https://www.facebook.com">
+                      <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com">
+                      <i class="fa-brands fa-youtube"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.x.com">
+                      <i class="fa-brands fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com">
+                      <i class="fa-brands fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chefe Section    S T A R T -->
+    <div class="chefe-section fix section-padding bg-white">
+      <div class="chefe-wrapper style1">
+        <div class="container">
+          <div class="title-area">
+            <div class="title wow fadeInUp" data-wow-delay="0.7s">
+              Other Chefs
+            </div>
+          </div>
+          <div class="chefe-card-wrap style1 pb-5">
+            <div class="row gy-5 gx-80">
+              {% for chef in Chefs %}
+              <div class="col-md-6 col-xl-4">
+                <div
+                  class="chefe-card style2 wow fadeInUp"
+                  data-wow-delay="0.2s"
+                >
+                  <div class="chefe-thumb">
+                    <img src="{{ chef.ChefImage.url }}" alt="thumb" />
+                  </div>
+
+                  <div class="icon">
+                    <span>Share</span>
+                    <a href="https://www.facebook.com/"
+                      ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                    <a href="https://www.youtube.com/"
+                      ><i class="fa-brands fa-youtube"></i
+                    ></a>
+                    <a href="https://www.linkedin.com/"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                  </div>
+                  <div class="chefe-content">
+                    <a href="{% url 'chefdetail' chef.ChefName %}">
+                      <h3>{{ chef.ChefName }}</h3>
+                    </a>
+                    <p>{{ chef.ChefPosition }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'main/footer.html' %} 
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>

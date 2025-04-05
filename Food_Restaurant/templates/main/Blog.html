@@ -1,0 +1,56 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %} 
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+    <!-- Blog Section    S T A R T -->
+    <section class="blog-section section-padding fix">
+      <div class="blog-wrapper style3 mt-n30">
+        <div class="container">
+          <div class="blog-card-wrap style3">
+            {% for blog in Blog %}
+            <div class="blog-card style1 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="blog-thumb">
+                <img src="{{ blog.BlogThumbnail.url }}" alt="thumb" />
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <div class="item1">
+                    <h6>{{ blog.BlogDate|date:'d'}}</h6>
+                    <p>{{ blog.BlogDate|date:'M'}}</p>
+                  </div>
+                  <div class="item2">
+                    <div class="icon">
+                      <img src="{% static 'assets/img/icon/user.svg' %}" alt="icon" /><span
+                        >By {{ blog.BlogAuthor }}</span
+                      >
+                    </div>
+                  </div>
+                  <div class="item3">
+                    <div class="icon">
+                      <img src="{% static 'assets/img/icon/tag.svg' %}" alt="icon" /><span
+                        >{{ blog.CatergoryID.CatergoryName }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <a href="{% url 'blogdetail' blog.BlogID %}">
+                  <h3>{{ blog.BlogTitle }}</h3>
+                </a>
+                <a href="{% url 'blogdetail' blog.BlogID %}" class="link-btn">
+                  <span>Read More</span>
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+              </div>
+            </div> 
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {% include 'main/footer.html' %} 
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>

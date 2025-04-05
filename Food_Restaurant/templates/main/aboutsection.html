@@ -1,0 +1,100 @@
+{% load static %}
+<section class="about-us-section fix section-padding pb-0">
+  <div class="about-wrapper style1">
+    <div class="shape1 d-none d-xxl-block">
+      <img
+        src=" {{ About.AboutLeftBG.url }}"
+        alt="shape"
+      />
+    </div>
+    <div class="shape2 d-none d-xxl-block">
+      <img
+        src=" {% static 'assets/img/shape/aboutShape1_2.png' %}"
+        alt="shape"
+      />
+    </div>
+    <div class="shape3 d-none d-xxl-block">
+      <img
+        class="cir36"
+        src=" {{ About.AboutLeftThumbnail.url }}"
+        alt="shape"
+      />
+    </div>
+    <div class="shape4 d-none d-xxl-block">
+      <img
+        src=" {{ About.AboutRightBG.url }}"
+        alt="shape"
+      />
+    </div>
+    <div class="shape5 d-none d-xxl-block">
+      <img
+        src=" {% static 'assets/img/shape/aboutShape1_5.png' %}"
+        alt="shape"
+      />
+    </div>
+    <div class="shape6 d-none d-xxl-block">
+      <img
+        class="cir36"
+        src=" {{ About.AboutRightThumbnail.url }}"
+        alt="shape"
+      />
+    </div>
+    <div class="container">
+      <div class="about-us section-padding">
+        <div class="row">
+          <div class="col-12">
+            <div class="title-area">
+              <div
+                class="sub-title text-center wow fadeInUp"
+                data-wow-delay="0.5s"
+              >
+                <img
+                  class="me-1"
+                  src=" {% static 'assets/img/icon/titleIcon.svg' %}"
+                  alt="icon"
+                />About US<img
+                  class="ms-1"
+                  src=" {% static 'assets/img/icon/titleIcon.svg' %}"
+                  alt="icon"
+                />
+              </div>
+              <h2 class="title wow fadeInUp" data-wow-delay="0.7s">
+                {{ About.AboutTitle }}
+              </h2>
+              <div class="text wow fadeInUp" data-wow-delay="0.8s">
+                {{ About.AboutDescription }}
+              </div>
+              <div class="btn-wrapper wow fadeInUp" data-wow-delay="0.9s">
+                <a class="theme-btn" href="{% url 'shop' %}">
+                  ORDER NOW <i class="fa-sharp fa-regular fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee-wrapper style-1 text-slider section-padding ">
+    <div class="marquee-inner to-left">
+        <ul class="marqee-list d-flex">
+            <li class="marquee-item style1">
+                <span class="text-slider"></span><span class="text-slider text-style">chicken pizza</span>
+                <span class="text-slider"></span><span class="text-slider text-style">GRILLED CHICKEN</span>
+                <span class="text-slider"></span><span class="text-slider text-style">BURGER</span>
+                <span class="text-slider"></span><span class="text-slider text-style">CHICKEN PIZZA</span>
+                <span class="text-slider"></span><span class="text-slider text-style">FRESH PASTA</span>
+                <span class="text-slider"></span><span class="text-slider text-style">ITALIANO FRENCH FRY</span>
+                <span class="text-slider"></span><span class="text-slider text-style">CHICKEN FRY</span>
+                <span class="text-slider"></span><span class="text-slider text-style">chicken pizza</span>
+                <span class="text-slider"></span><span class="text-slider text-style">GRILLED CHICKEN</span>
+                <span class="text-slider"></span><span class="text-slider text-style">BURGER</span>
+                <span class="text-slider"></span><span class="text-slider text-style">CHICKEN PIZZA</span>
+                <span class="text-slider"></span><span class="text-slider text-style">FRESH PASTA</span>
+                <span class="text-slider"></span><span class="text-slider text-style">ITALIANO FRENCH FRY</span>
+                <span class="text-slider"></span><span class="text-slider text-style">CHICKEN FRY</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</section>

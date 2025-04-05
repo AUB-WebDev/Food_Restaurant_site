@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="zxx">
+  {% include 'main/head.html' %}
+  <body>
+    {% include 'main/preloader.html' %}
+    {% include 'main/header.html' %} 
+    {% include 'main/searcharea.html' %}
+
+    <!-- Offer Section   S T A R T -->
+    {% if Offers %}
+      {% include 'main/offersection.html' %}
+    {% endif %}
+
+    <!-- About Us Section   S T A R T -->
+    {% if About %}
+      {% include 'main/aboutsection.html' %}
+    {% endif %}
+
+    <!-- Cta section  S T A R T -->
+    {% if CTA %}
+      {% include 'main/ctasection.html' %}
+    {% endif %}
+
+    <!-- Chefe Section    S T A R T -->
+    {% if Chef%}
+      {% include 'main/chefsection.html' %}
+    {% endif %}
+
+    <!-- Testimonial Section    S T A R T -->
+    {% include 'main/testimonialsection.html' %}
+
+    <!-- Gallery Section    S T A R T -->
+    {% if Gallery %}
+      {% include 'main/galerysection.html' %}
+    {% endif %}
+
+    {% include 'main/footer.html' %}
+    {% include 'main/scriptpath.html' %}
+  </body>
+</html>
