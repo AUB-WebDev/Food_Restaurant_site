@@ -1,0 +1,8 @@
+asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1733215607532/work
+Django @ file:///home/conda/feedstock_root/build_artifacts/django_1738780034837/work
+django-ckeditor==6.7.2
+django-js-asset==3.1.2
+pillow @ file:///D:/bld/pillow_1735929734120/work
+psycopg2==2.9.10
+sqlparse @ file:///home/conda/feedstock_root/build_artifacts/sqlparse_1734007102193/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1733188668063/work
