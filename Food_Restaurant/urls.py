@@ -20,4 +20,6 @@ urlpatterns = [
     path('blogdetail/<int:blog_id>/', views.viewBlogDetail, name='blogdetail'),
     path('chef/', views.viewChef, name='chef'),
     path('chefdetail/<str:chefname>/', views.viewChefDetail, name='chefdetail'),
+    path('about/', views.viewAbout, name='about'),
+    path('service/', views.viewService, name='service'),
 ]

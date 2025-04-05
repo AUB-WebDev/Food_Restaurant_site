@@ -5,7 +5,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Menu(models.Model):
     MenuName = models.CharField(max_length=40)
     MenuID = models.BigAutoField(primary_key=True)
-    MenuURL = models.CharField(max_length=300, null=True, blank=True)
+    TemplateID = models.ForeignKey('Template', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.MenuName + " - ( " + str(self.MenuID) + " )"
@@ -14,7 +14,7 @@ class SubMenu(models.Model):
     SubMenuName = models.CharField(max_length=40)
     SubMenuID = models.BigAutoField(primary_key=True)
     MenuID = models.ForeignKey('Menu', on_delete=models.CASCADE)
-    SubMenuURL = models.CharField(max_length=300)
+    TemplateID = models.ForeignKey('Template', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.SubMenuName + " - ( " + str(self.SubMenuID) + " )"
@@ -22,7 +22,7 @@ class SubMenu(models.Model):
 class Footer(models.Model):
     FooterName = models.CharField(max_length=40)
     FooterID = models.BigAutoField(primary_key=True)
-    FooterURL = models.CharField(max_length=300, null=True, blank=True)
+    TemplateID = models.ForeignKey('Template', on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return self.FooterName + " - ( " + str(self.FooterID) + " )"
@@ -127,3 +127,19 @@ class Contact(models.Model):
     
     def __str__(self):
         return 'Contact Info'
+    
+class About(models.Model):
+    AboutTitle = models.CharField(max_length=100)
+    AboutDescription = RichTextUploadingField(null=True, blank=True)
+    AboutLeftBG = models.ImageField(upload_to='images/')
+    AboutRightBG = models.ImageField(upload_to='images/')
+    AboutLeftThumbnail = models.ImageField(upload_to='images/')
+    AboutRightThumbnail = models.ImageField(upload_to='images/')
+
+
+class Template(models.Model):
+    TemplateID = models.BigAutoField(primary_key=True)
+    TemplateName = models.CharField(max_length=100)
+    TemplateURL = models.CharField(max_length=300)
+    def __str__(self):
+        return self.TemplateName+" - ( " + str(self.TemplateID) + " )"

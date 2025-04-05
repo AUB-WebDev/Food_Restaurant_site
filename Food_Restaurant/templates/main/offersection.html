@@ -14,24 +14,18 @@
           >
             <div class="offer-content">
               <h6>ON THIS WEEK</h6>
-              <h3>{{ offer.ProductName }}</h3>
+              <h3>{{ offer.ProductID.ProductName }}</h3>
               <p>limits Time Offer</p>
-              <a href="menu.html" class="theme-btn style4"
+              <a href="{% url 'shopdetail' offer.ProductID.ProductID %}" class="theme-btn style4"
                 >ORDER NOW <i class="fa-sharp fa-regular fa-arrow-right"></i
               ></a>
             </div>
             <div class="offer-thumb">
               <img
                 class="thumbImg"
-                src=" {{ offer.ProductImage.url }}"
+                src=" {{ offer.ProductID.ProductImage.url }}"
                 alt="thumb"
               />
-              <div class="shape float-bob-x">
-                <img
-                  src=" {% static 'assets/img/shape/offerShape1_4.png' %}"
-                  alt="shape"
-                />
-              </div>
             </div>
           </div>
         </div>

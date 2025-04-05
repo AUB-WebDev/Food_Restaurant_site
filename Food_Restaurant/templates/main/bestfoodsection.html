@@ -15,11 +15,10 @@
           <h2 class="title wow fadeInUp" data-wow-delay="0.7s">Popular Food Items</h2>
         </div>
         <div class="slider-area mb-n40">
-          
           <div class="swiper bestFoodItems-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-              {% for product in Products %}  
+                {% for product in Products %}  
                 <div class="single-food-items">
                   <div class="item-thumb">
                     <img src="{{ product.ProductImage.url }}" alt="thumb" />
@@ -33,12 +32,10 @@
                     <h6>${{ product.ProductPrice }}</h6>
                   </div>
                 </div>
-                {% endfor %}
+              {% endfor %}                
               </div>
-
               </div>
-          </div>
-            
+            </div>
             </div>
           </div>
           <div class="bestFoodItems-pagination"></div>

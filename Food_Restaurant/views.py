@@ -16,8 +16,47 @@ def viewIndex(request):
         'Slide' : Slide.objects.all(),
         'Products': Products.objects.all(),
         'Gallery': Gallery.objects.all(),
+        'Offers': SpecialOffer.objects.all(),
+        'Blog' : Blog.objects.all(),
+        'Chef' : Chef.objects.all()[:3],
+        'About' : About.objects.first(),
+        'CTA' : SpecialOffer.objects.first(),
     }
     return render(request, 'main/index.html', context)
+
+def viewAbout(request):
+    context ={
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Slide' : Slide.objects.all(),
+        'Products': Products.objects.all(),
+        'Gallery': Gallery.objects.all(),
+        'Offers': SpecialOffer.objects.all(),
+        'Blog' : Blog.objects.all(),
+        'Chef' : Chef.objects.all()[:3],
+        'About' : About.objects.first(),
+        'CTA' : SpecialOffer.objects.first(),
+    }
+    return render(request, 'main/About.html', context)
+
+def viewService(request):
+    context ={
+        'Menu': Menu.objects.all(),
+        'SubMenu': SubMenu.objects.all(),
+        'Footer' : Footer.objects.all(),
+        'Contact' : Contact.objects.first(),
+        'Slide' : Slide.objects.all(),
+        'Products': Products.objects.all(),
+        'Gallery': Gallery.objects.all(),
+        'Offers': SpecialOffer.objects.all(),
+        'Blog' : Blog.objects.all(),
+        'Chef' : Chef.objects.all()[:3],
+        'About' : About.objects.first(),
+        'CTA' : SpecialOffer.objects.first(),
+    }
+    return render(request, 'main/Service.html', context)
 
 def custom_404_view(request, exception):
     return render(request, 'main/404.html', status=404)

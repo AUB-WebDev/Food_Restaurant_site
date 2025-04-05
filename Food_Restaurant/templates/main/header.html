@@ -35,14 +35,14 @@
                                             <ul>
                                                 {% for menu in Menu %}
                                                 <li class="has-dropdown">
-                                                    <a href="{{ menu.url }}">
+                                                    <a href="{% if menu.TemplateID %}{% url menu.TemplateID.TemplateURL %}{% else %}#{% endif %}">
                                                         {{ menu.MenuName }}
                                                         <i class="fa-regular fa-plus"></i>
                                                     </a>
                                                     <ul class="submenu">
                                                     {% for submenu in SubMenu %}
                                                         {% if submenu.MenuID.MenuID == menu.MenuID %}
-                                                            <li><a href="{{ submenu.SubMenuURL }}"> {{ submenu.SubMenuName }}</a></li>
+                                                            <li><a href="{% if submenu.TemplateID %}{% url submenu.TemplateID.TemplateURL %}{% else %}#{% endif %}"> {{ submenu.SubMenuName }}</a></li>
                                                         {% endif %}
                                                     {% endfor %}
                                                     </ul>

@@ -71,7 +71,7 @@
                             <ul class="list-area">
                                 {% for footer in Footer %}
                                 <li>
-                                    <a href="{{ footer.FooterURL }}">
+                                    <a href="{% if footer.TemplateID %}{% url footer.TemplateID.TemplateURL %}{% else %}#{% endif %}">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         {{ footer.FooterName }}
                                     </a>
@@ -87,31 +87,31 @@
                             </div>
                             <ul class="list-area">
                                 <li>
-                                    <a href="menu.html">
+                                    <a href="#">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         Burger King
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="menu.html">
+                                    <a href="#">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         Pizza king
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="menu.html">
+                                    <a href="#">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         Fresh Food
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="menu.html">
+                                    <a href="#">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         Vegetable
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="menu.html">
+                                    <a href="#">
                                         <i class="fa-solid fa-chevrons-right"></i>
                                         Desserts
                                     </a>
