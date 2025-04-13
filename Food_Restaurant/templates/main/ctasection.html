@@ -1,6 +1,6 @@
 {% load static %}
 <section class="cta-section fix">
-  <div class="cta-wrapper style1 section-padding">
+  <div class="cta-wrapper style1 section-padding" style="background-image: url({{ CTA.CTABg.url }});">
     <div class="shape1 float-bob-x d-none d-xxl-block">
       <img src=" {% static 'assets/img/shape/ctaShape1_1.png' %}" alt="shape" />
     </div>
@@ -36,7 +36,7 @@
             <div class="cta-thumb">
               <img
                 class="img-fluid float-bob-x"
-                src=" {{ CTA.ProductID.ProductImage.url }}"
+                src=" {{ CTA.CTAImage.url }}"
                 alt="thumb"
               />
             </div>

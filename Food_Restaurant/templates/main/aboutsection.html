@@ -62,7 +62,7 @@
                 {{ About.AboutTitle }}
               </h2>
               <div class="text wow fadeInUp" data-wow-delay="0.8s">
-                {{ About.AboutDescription }}
+                {{ About.AboutDescription|safe }}
               </div>
               <div class="btn-wrapper wow fadeInUp" data-wow-delay="0.9s">
                 <a class="theme-btn" href="{% url 'shop' %}">

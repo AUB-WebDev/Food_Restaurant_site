@@ -1,11 +1,12 @@
 {% load static %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %} 
     {% include 'main/header.html' %} 
     {% include 'main/searcharea.html' %}
 
+    
     <!-- Shop Details Section S T A R T -->
     <div class="shop-details-section section-padding fix">
       <div class="shop-details-wrapper style1">
@@ -17,13 +18,13 @@
                   <div class="product-big-img bg-color2">
                     <div class="dishes-thumb">
                       <img src="{{ Product.ProductImage.url }}" alt="thumb" />
-                      <div class="circle-shape d-none d-md-block">
+                      {% comment %} <div class="circle-shape d-none d-md-block">
                         <img
                           class="cir36"
                           src="{% static 'assets/img/food-items/circleShape2.png' %}"
                           alt="shape"
                         />
-                      </div>
+                      </div> {% endcomment %}
                     </div>
                   </div>
                 </div>
@@ -79,12 +80,12 @@
                           </button>
                         </div>
                       </div>
-                      <a href="cart.html" class="theme-btn"
+                      <a href="{% url 'add_to_cart' Product.ProductID %}" class="theme-btn"
                         >Add to Cart<i
                           class="fa-regular fa-cart-shopping bg-transparent text-white"
                         ></i
                       ></a>
-                      <a href="wishlist.html" class="theme-btn style5 border-0"
+                      <a href="{% url 'add_to_wishlist' Product.ProductID %}" class="theme-btn style5 border-0"
                         >ADD TO wishlist<i
                           class="fa-sharp fa-solid fa-heart"
                         ></i
@@ -135,7 +136,7 @@
                         <div class="post-comment">
                           <div class="comment-avater">
                             <img
-                              src="{% static 'assets/img/blog/comment-author1.png' %}"
+                              src="{% static 'assets\img\comment-author1.png' %}"
                               alt="Comment Author"
                             />
                           </div>
@@ -161,7 +162,7 @@
                         <div class="post-comment">
                           <div class="comment-avater">
                             <img
-                              src="{% static 'assets/img/blog/comment-author2.png' %}"
+                              src="{% static 'assets\img\comment-author2.png' %}"
                               alt="Comment Author"
                             />
                           </div>

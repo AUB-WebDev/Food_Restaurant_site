@@ -1,7 +1,7 @@
 {% load static %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %} 
     {% include 'main/header.html' %} 
     {% include 'main/searcharea.html' %}
@@ -37,218 +37,60 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="wishlist_item">
-                  <td class="product-cb">
-                    <input
-                      type="checkbox"
-                      name="wishlist_pr[]"
-                      value="58"
-                      title="Select for bulk action"
-                    />
-                  </td>
-                  <td class="product-remove">
-                    <button
-                      type="submit"
-                      name="tinvwl-remove"
-                      value="58"
-                      title="Remove"
-                    >
-                      <i class="fal fa-times"></i>
-                    </button>
-                  </td>
-                  <td class="product-thumbnail">
-                    <a href="shop-details.html"
-                      ><img
-                        src="{% static 'assets/img/dishes/dishes5_1.png' %} "
-                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                        alt="image"
-                    /></a>
-                  </td>
-                  <td class="product-name">
-                    <a href="shop-details.html">Egg and Cucumber</a>
-                  </td>
-                  <td class="product-price">
-                    <span class="woocommerce-Price-amount amount"
-                      ><bdi
-                        ><span class="woocommerce-Price-currencySymbol">$</span
-                        >45.00</bdi
-                      ></span
-                    >
-                  </td>
-                  <td class="product-date">
-                    <time class="entry-date" datetime="2021-11-21 03:54:24"
-                      >November 21, 2023</time
-                    >
-                  </td>
-                  <td class="product-stock">
-                    <p class="stock in-stock">
-                      <span><i class="fas fa-check text-success"></i></span
-                      ><span class="tinvwl-txt text-success">In stock</span>
-                    </p>
-                  </td>
-                  <td class="product-action">
-                    <button
-                      class="button as-btn style4"
-                      name="tinvwl-add-to-cart"
-                      value="58"
-                      title="Add to Cart"
-                    >
-                      <i class="fal fa-shopping-cart"></i
-                      ><span class="tinvwl-txt">Add to Cart</span>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="wishlist_item">
-                  <td class="product-cb">
-                    <input
-                      type="checkbox"
-                      name="wishlist_pr[]"
-                      value="60"
-                      title="Select for bulk action"
-                    />
-                  </td>
-                  <td class="product-remove">
-                    <button
-                      type="submit"
-                      name="tinvwl-remove"
-                      value="60"
-                      title="Remove"
-                    >
-                      <i class="fal fa-times"></i>
-                    </button>
-                  </td>
-                  <td class="product-thumbnail">
-                    <a href="shop-details.html"
-                      ><img
-                        src="{% static 'assets/img/dishes/dishes5_2.png' %} "
-                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                        alt="image"
-                    /></a>
-                  </td>
-                  <td class="product-name">
-                    <a href="shop-details.html">Brick Oven Pepperoni</a>
-                  </td>
-                  <td class="product-price">
-                    <ins
-                      ><span class="woocommerce-Price-amount amount"
+                {% for key, item in Wishlist.items %}
+                  <tr class="wishlist_item">
+                    <td class="product-cb">
+                      <input
+                        type="checkbox"
+                        name="wishlist_pr[]"
+                        value="58"
+                        title="Select for bulk action"
+                      />
+                    </td>
+                    <td class="product-remove">
+                      <a href="{% url 'remove_from_wishlist' item.Product.ProductID %}" title="Remove">
+                        <i class="fal fa-times"></i>
+                      </a>
+                    </td>  
+
+                    <td class="product-thumbnail">
+                      <a href="shop-details.html"
+                        ><img
+                          src="{{ item.Product.ProductImage.url }} "
+                          class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                          alt="image"
+                      /></a>
+                    </td>
+                    <td class="product-name">
+                      <a href="shop-details.html">{{ item.Product.ProductName }}</a>
+                    </td>
+                    <td class="product-price">
+                      <span class="woocommerce-Price-amount amount"
                         ><bdi
-                          ><span class="woocommerce-Price-currencySymbol"
-                            >$</span
-                          >18.00</bdi
+                          ><span class="woocommerce-Price-currencySymbol">$</span
+                          >{{ item.Product.ProductPrice }}</bdi
                         ></span
-                      ></ins
-                    >
-                    <del
-                      ><span class="woocommerce-Price-amount amount"
-                        ><bdi
-                          ><span class="woocommerce-Price-currencySymbol"
-                            >$</span
-                          >20.00</bdi
-                        ></span
-                      ></del
-                    >
-                  </td>
-                  <td class="product-date">
-                    <time class="entry-date" datetime="2021-11-21 03:54:24"
-                      >November 21, 2021</time
-                    >
-                  </td>
-                  <td class="product-stock">
-                    <p class="stock in-stock">
-                      <span><i class="fas fa-check text-success"></i></span
-                      ><span class="tinvwl-txt text-success">In stock</span>
-                    </p>
-                  </td>
-                  <td class="product-action">
-                    <button
-                      class="button as-btn style4"
-                      name="tinvwl-add-to-cart"
-                      value="60"
-                      title="Add to Cart"
-                    >
-                      <i class="fal fa-shopping-cart"></i
-                      ><span class="tinvwl-txt">Add to Cart</span>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="wishlist_item">
-                  <td class="product-cb">
-                    <input
-                      type="checkbox"
-                      name="wishlist_pr[]"
-                      value="60"
-                      title="Select for bulk action"
-                    />
-                  </td>
-                  <td class="product-remove">
-                    <button
-                      type="submit"
-                      name="tinvwl-remove"
-                      value="60"
-                      title="Remove"
-                    >
-                      <i class="fal fa-times"></i>
-                    </button>
-                  </td>
-                  <td class="product-thumbnail">
-                    <a href="shop-details.html"
-                      ><img
-                        src="{% static 'assets/img/dishes/dishes5_3.png' %} "
-                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                        alt="image"
-                    /></a>
-                  </td>
-                  <td class="product-name">
-                    <a href="shop-details.html">Double Patty Veg</a>
-                  </td>
-                  <td class="product-price">
-                    <ins
-                      ><span class="woocommerce-Price-amount amount"
-                        ><bdi
-                          ><span class="woocommerce-Price-currencySymbol"
-                            >$</span
-                          >18.00</bdi
-                        ></span
-                      ></ins
-                    >
-                    <del
-                      ><span class="woocommerce-Price-amount amount"
-                        ><bdi
-                          ><span class="woocommerce-Price-currencySymbol"
-                            >$</span
-                          >20.00</bdi
-                        ></span
-                      ></del
-                    >
-                  </td>
-                  <td class="product-date">
-                    <time class="entry-date" datetime="2021-11-21 03:54:24"
-                      >November 21, 2021</time
-                    >
-                  </td>
-                  <td class="product-stock">
-                    <p class="stock in-stock">
-                      <span
-                        ><i
-                          class="fa-regular fa-xmark text-theme-color"
-                        ></i></span
-                      ><span class="tinvwl-txt text-theme-color"
-                        >Out of Stock</span
                       >
-                    </p>
-                  </td>
-                  <td class="product-action">
-                    <button
-                      class="button as-btn style4"
-                      name="tinvwl-add-to-cart"
-                      value="60"
-                      title="Add to Cart"
-                    >
-                      <i class="fal fa-shopping-cart"></i
-                      ><span class="tinvwl-txt">Add to Cart</span>
-                    </button>
-                  </td>
-                </tr>
+                    </td>
+                    <td class="product-date">
+                      <time class="entry-date" datetime="2021-11-21 03:54:24"
+                        >{{ item.DateAdded }}</time
+                      >
+                    </td>
+                    <td class="product-stock">
+                      <p class="stock in-stock">
+                        <span><i class="fas fa-check text-success"></i></span
+                        ><span class="tinvwl-txt text-success">In stock</span>
+                      </p>
+                    </td>
+                    <td class="product-action">
+                      <i class="fal fa-shopping-cart">
+                      <a href="{% url 'add_to_cart' item.Product.ProductID %}">
+                        Add to Cart
+                      </a></i>
+                    </td>
+                  </tr> 
+                {% endfor %}
               </tbody>
             </table>
           </form>
