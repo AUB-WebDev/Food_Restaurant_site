@@ -1,7 +1,7 @@
 {% load static %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %} 
     {% include 'main/header.html' %} 
     {% include 'main/searcharea.html' %}
@@ -11,7 +11,8 @@
         <div class="woocommerce-notices-wrapper">
           <div class="woocommerce-message">Shipping costs updated.</div>
         </div>
-        <form action="#" class="woocommerce-cart-form">
+        <form method="POST" action="{% url 'update_cart' %}" class="woocommerce-cart-form">
+          {% csrf_token %}
           <table class="cart_table">
             <thead>
               <tr>
@@ -24,24 +25,25 @@
               </tr>
             </thead>
             <tbody>
+              {% for key, item in Cart.items %}
               <tr class="cart_item">
                 <td data-title="Product">
-                  <a class="cartimage" href="shop-details.html"
+                  <a class="cartimage" href="{% url 'shopdetail' item.Product.ProductID %}"
                     ><img
                       width="91"
                       height="91"
-                      src="{% static 'assets/img/dishes/dishes4_1.png' %}"
+                      src="{{ item.Product.ProductImage.url }}"
                       alt="Image"
                   /></a>
                 </td>
                 <td data-title="Name">
-                  <a class="cartname" href="shop-detailis.html"
-                    >Brick Oven Pepperoni</a
+                  <a class="cartname" href="{% url 'shopdetail' item.Product.ProductID %}"
+                    >{{ item.Product.ProductName }}</a
                   >
                 </td>
                 <td data-title="Price">
                   <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
+                    ><bdi><span>$</span>{{ item.Product.ProductPrice }}</bdi></span
                   >
                 </td>
                 <td data-title="Quantity">
@@ -52,7 +54,8 @@
                     <input
                       type="number"
                       class="qty-input"
-                      value="1"
+                      name="quantity_{{ item.Product.ProductID }}"
+                      value="{{ item.Quantity }}"
                       min="1"
                       max="99"
                     />
@@ -63,159 +66,16 @@
                 </td>
                 <td data-title="Total">
                   <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
+                    ><bdi><span>$</span>{{ item.Subtotal }}</bdi></span
                   >
                 </td>
                 <td data-title="Remove">
-                  <a href="#" class="remove"
+                  <a href="{% url 'remove_from_cart' item.Product.ProductID %}" class="remove"
                     ><i class="fal fa-trash-alt"></i
                   ></a>
                 </td>
-              </tr>
-              <tr class="cart_item">
-                <td data-title="Product">
-                  <a class="cartimage" href="shop-details.html"
-                    ><img
-                      width="91"
-                      height="91"
-                      src="{% static 'assets/img/dishes/dishes4_2.png' %}"
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a class="cartname" href="shop-detailis.html"
-                    >Cheese Hand-Pizza</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Quantity">
-                  <div class="quantity">
-                    <button class="quantity-minus qty-btn">
-                      <i class="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      class="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button class="quantity-plus qty-btn">
-                      <i class="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Remove">
-                  <a href="#" class="remove"
-                    ><i class="fal fa-trash-alt"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr class="cart_item">
-                <td data-title="Product">
-                  <a class="cartimage" href="shop-details.html"
-                    ><img
-                      width="91"
-                      height="91"
-                      src="{% static 'assets/img/dishes/dishes4_3.png' %}"
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a class="cartname" href="shop-detailis.html"
-                    >Over Loaded Vegan</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Quantity">
-                  <div class="quantity">
-                    <button class="quantity-minus qty-btn">
-                      <i class="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      class="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button class="quantity-plus qty-btn">
-                      <i class="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Remove">
-                  <a href="#" class="remove"
-                    ><i class="fal fa-trash-alt"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr class="cart_item">
-                <td data-title="Product">
-                  <a class="cartimage" href="shop-details.html"
-                    ><img
-                      width="91"
-                      height="91"
-                      src="{% static 'assets/img/dishes/dishes4_4.png' %}"
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a class="cartname" href="shop-detailis.html"
-                    >Chicken Leg Piece</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Quantity">
-                  <div class="quantity">
-                    <button class="quantity-minus qty-btn">
-                      <i class="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      class="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button class="quantity-plus qty-btn">
-                      <i class="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span class="amount"
-                    ><bdi><span>$</span>18</bdi></span
-                  >
-                </td>
-                <td data-title="Remove">
-                  <a href="#" class="remove"
-                    ><i class="fal fa-trash-alt"></i
-                  ></a>
-                </td>
-              </tr>
+              </tr> 
+              {% endfor %}
               <tr>
                 <td colspan="6" class="actions">
                   <div class="th-cart-coupon">
@@ -228,9 +88,8 @@
                       Apply Coupon
                     </button>
                   </div>
-
-                  <a href="cart.html" class="theme-btn">Update cart</a>
-                  <a href="shop.html" class="theme-btn">Continue Shopping</a>
+                  <button type="submit" class="theme-btn">Update cart</button>
+                  <a href="{% url 'shop' %}" class="theme-btn">Continue Shopping</a>
                 </td>
               </tr>
             </tbody>
@@ -245,7 +104,7 @@
                   <td>Cart Subtotal</td>
                   <td data-title="Cart Subtotal">
                     <span class="amount"
-                      ><bdi><span>$</span>47</bdi></span
+                      ><bdi><span>$</span>{{ Total|floatformat:2 }}</bdi></span
                     >
                   </td>
                 </tr>
@@ -327,7 +186,7 @@
                   <td data-title="Total">
                     <strong
                       ><span class="amount"
-                        ><bdi><span>$</span>47</bdi></span
+                        ><bdi><span>$</span>{{ Total|floatformat:2 }}</bdi></span
                       ></strong
                     >
                   </td>
@@ -335,7 +194,7 @@
               </tfoot>
             </table>
             <div class="wc-proceed-to-checkout mt-3">
-              <a href="checkout.html" class="theme-btn btn-fw"
+              <a href="{% url 'checkout' %}" class="theme-btn btn-fw"
                 >Proceed to checkout</a
               >
             </div>

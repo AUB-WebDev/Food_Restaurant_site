@@ -2,7 +2,7 @@
 {% load random_number_function %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %} 
     {% include 'main/header.html' %} 
     {% include 'main/searcharea.html' %}
@@ -15,20 +15,6 @@
             <div class="gallery-thumb style{% random_number 1 5 %}">
               <a href="{% url 'shopdetail' product_id=gallery.ProductID.ProductID %}">
                 <img src="{{ gallery.GalleryImage.url }}" alt="thumb" />
-                <div class="icon">
-                  <img src="{% static 'assets/img/icon/arrow_icon.png' %}" alt="icon" />
-                </div>
-              </a>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        <div class="row gy-4 mb-4">
-          {% for product in Product%}
-          <div class="col-lg-5">
-            <div class="gallery-thumb style{% random_number 1 5 %}">
-              <a href="{% url 'shopdetail' product_id=product.ProductID %}">
-                <img src="{{ product.ProductImage.url }}" alt="thumb" />
                 <div class="icon">
                   <img src="{% static 'assets/img/icon/arrow_icon.png' %}" alt="icon" />
                 </div>

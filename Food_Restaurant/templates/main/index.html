@@ -1,7 +1,7 @@
 {% load static %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %}
     {% include 'main/header.html' %} 
     {% include 'main/searcharea.html' %}
@@ -16,7 +16,6 @@
       {% include 'main/bestfoodsection.html' %}
     {% endif %} {% endcomment %}  
     <!-- Offer Section S T A R T -->
-    
     {% if Offers %}
       {% include 'main/offersection.html' %} 
     {% endif %}
@@ -25,6 +24,7 @@
     {% if About %}
       {% include 'main/aboutsection.html' %} 
     {% endif %}
+    
     <!-- Popular Dishes Section S T A R T -->
     {% if Products %}
       {% include 'main/populardish.html' %}

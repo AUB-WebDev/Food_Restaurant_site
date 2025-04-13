@@ -2,6 +2,9 @@ from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
 
+admin.site.site_header = "Food Restaurant Admin"
+admin.site.site_title = "Food Restaurant Admin Portal"
+
 # Register your models here.
 class MenuAdmin(admin.ModelAdmin):
     list_display = ('MenuName', 'MenuID', 'TemplateID')
@@ -44,7 +47,6 @@ class CatergoryAdmin(admin.ModelAdmin):
     search_fields = ('CatergoryName',)
     list_filter = ('CatergoryID',)
     list_per_page = 10
-    
     ordering = ('CatergoryID',)
     
 admin.site.register(Catergory, CatergoryAdmin)
@@ -61,6 +63,7 @@ class ProductsAdmin(admin.ModelAdmin):
     search_fields = ('ProductName','ProductID')
     list_filter = ('ProductID', 'CategoryID', 'ProductPrice')
     list_per_page = 10
+    ordering = ('ProductID',)
     
 admin.site.register(Products, ProductsAdmin)
 
@@ -73,12 +76,21 @@ class chefAdmin(admin.ModelAdmin):
     readonly_fields = ["image_preview"]
     list_display = ('ChefName', 'ChefPosition','image_preview')
     search_fields = ('ChefName',)
+    list_filter = ('ChefPosition',)
     list_per_page = 10
+    ordering = ('ChefName',)
     
 admin.site.register(Chef, chefAdmin)
 
 
-admin.site.register(ChefSkill)
+class ChefSkillAdmin(admin.ModelAdmin):
+    list_display = ('skill_name', 'chef', 'skill_percentage')
+    search_fields = ('skill_name', 'chef')
+    list_filter = ('chef', 'skill_name')
+    list_per_page = 10
+    ordering = ('chef',)
+    
+admin.site.register(ChefSkill, ChefSkillAdmin)
 
 class blogAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
@@ -91,10 +103,20 @@ class blogAdmin(admin.ModelAdmin):
     search_fields = ('BlogTitle', 'BlogID')
     list_filter = ('BlogID', 'BlogDate')
     list_per_page = 10
+    ordering = ('BlogID',)
+    
 admin.site.register(Blog, blogAdmin)
 
 
-admin.site.register(SocialMedia)
+class SocialMediaAdmin(admin.ModelAdmin):
+    list_display = ('CatergoryID', 'SocialMediaID', )
+    search_fields = ('CatergoryID', 'SocialMediaID')
+    list_filter = ('CatergoryID', 'SocialMediaID')
+    list_per_page = 10
+    ordering = ('CatergoryID',)
+    
+admin.site.register(SocialMedia, SocialMediaAdmin)
+
 
 class GalleryAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
@@ -104,8 +126,11 @@ class GalleryAdmin(admin.ModelAdmin):
     image_preview.short_description = 'Image Preview'
     readonly_fields = ["image_preview"]
     list_display = ( 'GalleryName','ProductID', 'image_preview')
-    search_fields = ('ProductID',)
+    search_fields = ('ProductID', 'GalleryName')
+    list_filter = ('ProductID',)
     list_per_page = 10
+    ordering = ('ProductID',)
+    
 admin.site.register(Gallery, GalleryAdmin)
 
 
@@ -118,7 +143,9 @@ class SpecialOfferAdmin(admin.ModelAdmin):
     readonly_fields = ["image_preview"]
     list_display = ( 'ProductID', 'Price','image_preview')
     search_fields = ('ProductID',)
+    list_filter = ('ProductID',)
     list_per_page = 10
+    ordering = ('ProductID',)
 admin.site.register(SpecialOffer, SpecialOfferAdmin)
 
 
@@ -130,25 +157,64 @@ class SlideAdmin(admin.ModelAdmin):
     image_preview.short_description = 'Image Preview'
     readonly_fields = ["image_preview"]
     list_display = ( 'SlideName', 'ProductID','image_preview')
+    list_filter = ('ProductID',)
     search_fields = ('SlideName',)
     list_per_page = 10
+    ordering = ('ProductID',)
+    
 admin.site.register(Slide, SlideAdmin)
 
 class faqsAdmin(admin.ModelAdmin):
     list_display = ('Question',)
     search_fields = ('Question',)
+    list_filter = ('Question',)
     list_per_page = 10
+    ordering = ('Question',)
+    
 admin.site.register(Faqs, faqsAdmin)
+
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('CatergoryID', 'Email', 'PhoneNumber', 'Address', )
+    search_fields = ('Email', 'PhoneNumber', 'CatergoryID')
+    list_filter = ('CatergoryID',)
+    list_per_page = 10
+    ordering = ('CatergoryID',)
+    
 admin.site.register(Contact, ContactAdmin)    
 
 
-admin.site.register(About)
+
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('AboutTitle', 'AboutDescription',)
+    search_fields = ('AboutTitle',)
+    list_filter = ('AboutTitle',)
+    list_per_page = 10
+    ordering = ('AboutTitle',)
+    
+admin.site.register(About, AboutAdmin)
 
 class TemplateAdmin(admin.ModelAdmin):
     list_display = ('TemplateName', 'TemplateID', 'TemplateURL')
-    search_fields = ('TemplateName',)
+    search_fields = ('TemplateName','TemplateID')
+    list_filter = ('TemplateName',)
     list_per_page = 10
+    ordering = ('TemplateID',)
+    
 admin.site.register(Template, TemplateAdmin)
+
+
+class CTAAdmin(admin.ModelAdmin):
+    def image_preview(self, obj):
+        if obj.CTAImage:
+            return format_html('<img src="{}" style="width: 100px; height: auto;" />', obj.CTAImage.url)
+        return "No Image"
+    image_preview.short_description = 'Image Preview'
+    readonly_fields = ["image_preview"]
+    list_display = ('ProductID', 'image_preview',)
+    search_fields = ('ProductID',)
+    list_filter = ('ProductID',)
+    list_per_page = 10
+    ordering = ('ProductID',)
+    
+admin.site.register(Cta, CTAAdmin)

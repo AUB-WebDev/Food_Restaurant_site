@@ -1,7 +1,7 @@
 {% load static %}
 <html lang="zxx">
   {% include 'main/head.html' %}
-  <body>
+  <body class="bg-color2">
     {% include 'main/preloader.html' %} 
     {% include 'main/header.html' %} 
     {%include 'main/searcharea.html' %}
@@ -263,6 +263,7 @@
         </form>
         <h4 class="mt-4 pt-lg-2">Your Order</h4>
         <form action="#" class="woocommerce-cart-form">
+          {% csrf_token %}
           <table class="cart_table mb-20">
             <thead>
               <tr>
@@ -274,35 +275,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="cart_item">
-                <td data-title="Product">
-                  <a class="cartimage" href="shop-details.html"
-                    ><img
-                      width="91"
-                      height="91"
-                      src="{% static 'assets/img/dishes/dishes4_1.png' %}"
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a class="cartname" href="shop-details.html"
-                    >Brick Oven Pepperoni</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span class="amount"
-                    ><bdi><span>$</span>281</bdi></span
-                  >
-                </td>
-                <td data-title="Quantity">
-                  <strong class="product-quantity">01</strong>
-                </td>
-                <td data-title="Total">
-                  <span class="amount"
-                    ><bdi><span>$</span>281</bdi></span
-                  >
-                </td>
-              </tr>
+              {% for key, item in Cart.items %}
+                <tr class="cart_item">
+                  <td data-title="Product">
+                    <a class="cartimage" href="{% url 'shopdetail' item.Product.ProductID %}"
+                      ><img
+                        width="91"
+                        height="91"
+                        src="{{ item.Product.ProductImage.url }}"
+                        alt="Image"
+                    /></a>
+                  </td>
+                  <td data-title="Name">
+                    <a class="cartname" href="{% url 'shopdetail' item.Product.ProductID %}"
+                      >{{ item.Product.ProductName }}</a
+                    >
+                  </td>
+                  <td data-title="Price">
+                    <span class="amount"
+                      ><bdi><span>$</span>{{ item.Product.ProductPrice }}</bdi></span
+                    >
+                  </td>
+                  <td data-title="Quantity">
+                    <strong class="product-quantity">{{ item.Quantity }}</strong>
+                  </td>
+                  <td data-title="Total">
+                    <span class="amount"
+                      ><bdi><span>$</span>{{ item.Subtotal }}</bdi></span
+                    >
+                  </td>
+                </tr> 
+              {% endfor %}
+
             </tbody>
             <tfoot class="checkout-ordertable">
               <tr class="cart-subtotal">
@@ -311,7 +315,7 @@
                   <span class="woocommerce-Price-amount amount"
                     ><bdi
                       ><span class="woocommerce-Price-currencySymbol">$</span
-                      >281.05</bdi
+                      >{{ Total|floatformat:2 }}</bdi
                     ></span
                   >
                 </td>
@@ -329,7 +333,7 @@
                     ><span class="woocommerce-Price-amount amount"
                       ><bdi
                         ><span class="woocommerce-Price-currencySymbol">$</span
-                        >281.05</bdi
+                        >{{ Total|floatformat:2 }}</bdi
                       ></span
                     ></strong
                   >

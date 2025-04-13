@@ -97,6 +97,7 @@ class Gallery(models.Model):
 class SpecialOffer(models.Model):
     ProductID = models.ForeignKey('Products', on_delete=models.CASCADE)
     Price = models.FloatField()
+    OfferImage = models.ImageField(upload_to='images/')
     
     def __str__(self):
         return self.ProductID.ProductName + " - ( " + str(self.Price) + " )"
@@ -135,6 +136,9 @@ class About(models.Model):
     AboutRightBG = models.ImageField(upload_to='images/')
     AboutLeftThumbnail = models.ImageField(upload_to='images/')
     AboutRightThumbnail = models.ImageField(upload_to='images/')
+    
+    def __str__(self):
+        return "About US"
 
 
 class Template(models.Model):
@@ -143,3 +147,17 @@ class Template(models.Model):
     TemplateURL = models.CharField(max_length=300)
     def __str__(self):
         return self.TemplateName+" - ( " + str(self.TemplateID) + " )"
+    
+class Cta(models.Model):
+    ProductID = models.ForeignKey('Products', on_delete=models.CASCADE)
+    CTAImage = models.ImageField(upload_to='images/')
+    CTABg = models.ImageField(upload_to='images/')
+    
+    
+class Wishlist(models.Model):
+    ProductID = models.ForeignKey('Products', on_delete=models.CASCADE)
+    CreatedDate = models.DateTimeField(auto_now_add=True)
+    
+class Cart(models.Model):
+    ProductID = models.ForeignKey('Products', on_delete=models.CASCADE)
+    Quantity = models.IntegerField(default=1)
